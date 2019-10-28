@@ -1,0 +1,32 @@
+<package>
+  <name>segway_image_nodelet</name>
+  <version>0.0.0</version>
+  <description>The segway_image_nodelet package</description>
+  <maintainer email="yuehu@todo.todo">yuehu</maintainer>
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>nodelet</build_depend>
+  <build_depend>ecl_threads</build_depend>
+  <build_depend>cv_bridge</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>nodelet</run_depend>
+  <run_depend>ecl_threads</run_depend>
+  <run_depend>cv_bridge</run_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <nodelet plugin="${prefix}/pub_nodelet.xml" />
+    <nodelet plugin="${prefix}/sub_nodelet.xml" />
+    <nodelet plugin="${prefix}/sub2_nodelet.xml" />
+    <nodelet plugin="${prefix}/sub3_nodelet.xml" />
+  </export>
+</package>
