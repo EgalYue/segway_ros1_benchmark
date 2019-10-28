@@ -1,0 +1,7 @@
+<library path="lib/libpointcloud_nodelet">
+    <class name="segway_pointcloud_nodelet/Pub_nodelet" type="segway_pointcloud_nodelet::Pub_nodelet" base_class_type="nodelet::Nodelet">
+        <description>
+            publisher nodelet.
+        </description>
+    </class>
+</library>

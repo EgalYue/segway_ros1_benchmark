@@ -1,0 +1,7 @@
+<library path="lib/libpointcloud_nodelet">
+    <class name="segway_pointcloud_nodelet/Sub2_nodelet" type="segway_pointcloud_nodelet::Sub2_nodelet" base_class_type="nodelet::Nodelet">
+        <description>
+            subscriber 2 nodelet.
+        </description>
+    </class>
+</library>
