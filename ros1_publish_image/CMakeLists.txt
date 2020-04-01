@@ -27,3 +27,7 @@ include_directories(include ${OpenCV_INCLUDE_DIRS})
 #build my_publisher and my_subscriber
 add_executable(publisher_image src/publisher.cpp)
 target_link_libraries(publisher_image ${catkin_LIBRARIES})
+
+add_executable(subscriber src/subscriber.cpp)
+target_link_libraries(subscriber ${catkin_LIBRARIES})
+

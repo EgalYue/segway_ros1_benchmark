@@ -23,3 +23,6 @@ include_directories(
 
 add_executable(publisher_pointcloud src/publisher.cpp)
 target_link_libraries(publisher_pointcloud ${catkin_LIBRARIES})
+
+add_executable(subscriber_pointcloud src/subscriber.cpp)
+target_link_libraries(subscriber_pointcloud ${catkin_LIBRARIES})
