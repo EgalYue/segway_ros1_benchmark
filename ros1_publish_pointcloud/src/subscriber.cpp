@@ -8,8 +8,6 @@
 //point types
 //#include <pcl/point_types.h>
 
-int i=0;
-char ch=(char)(int('0'));
 void call_back(const sensor_msgs::PointCloud2ConstPtr& msg){
     std_msgs::Header h = msg->header;
     ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
