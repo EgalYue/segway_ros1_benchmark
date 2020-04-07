@@ -20,7 +20,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     // std::cout<<h.stamp.nsec<<std::endl;
     // std::cout<<h.seq<<std::endl;
     ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
+    // ROS_INFO("%s, frame _id:  %s, image size: %d kb", "get it", h.frame_id.c_str(), (int)(msg->data.size()/1024));
+    // std::cout<< msg->step <<std::endl;
+    // std::cout<< msg->height << std::endl;
 
+    // ros::Time beginTime = ros::Time::now();
+    // std::cout<< beginTime.sec << std::endl;
+    // std::cout<< beginTime.nsec << std::endl;
   }
   catch (cv_bridge::Exception& e)
   {
@@ -34,8 +40,10 @@ int main(int argc, char **argv)
   ros::NodeHandle nh;
 //   cv::namedWindow("view");
 //   cv::startWindowThread();
-  image_transport::ImageTransport it(nh);
-  image_transport::Subscriber sub = it.subscribe("camera/image", 1, imageCallback);
+  // image_transport::ImageTransport it(nh);
+  // image_transport::Subscriber sub = it.subscribe("image_topic", 1, imageCallback);
+
+  ros::Subscriber sub = nh.subscribe ("image_topic", 1, imageCallback);
   ros::spin();
 //   cv::destroyWindow("view");
 }
