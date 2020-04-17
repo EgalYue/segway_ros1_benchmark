@@ -15,12 +15,16 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     //get header info
     std_msgs::Header h = msg->header;
     // std::cout<<h<<std::endl; //all at once
-    // std::cout<<h.stamp<<std::endl; //specific parts of it
+    //std::cout<< "from: " <<h.stamp<<std::endl; //specific parts of it
+    //std::cout<< "now: "<< ros::Time::now()<< std::endl;
+    ros::Time this_t = ros::Time::now();
+    std::cout<< "sub time:"<<this_t <<" time Diff: " << this_t - h.stamp << " frame_id: " << h.frame_id <<std::endl;
+
     // std::cout<<h.stamp.sec<<std::endl;
     // std::cout<<h.stamp.nsec<<std::endl;
     // std::cout<<h.seq<<std::endl;
-    ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
-    // ROS_INFO("%s, frame _id:  %s, image size: %d kb", "get it", h.frame_id.c_str(), (int)(msg->data.size()/1024));
+    //ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
+
     // std::cout<< msg->step <<std::endl;
     // std::cout<< msg->height << std::endl;
 

@@ -10,8 +10,11 @@
 
 void call_back(const sensor_msgs::PointCloud2ConstPtr& msg){
     std_msgs::Header h = msg->header;
-    ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
-    // std::cout<<msg->fields.size()<<std::endl;
+    ros::Time this_t = ros::Time::now();
+    std::cout<< "sub time:"<<this_t <<" time Diff: " << this_t - h.stamp << " frame_id: " << h.frame_id <<std::endl;
+    //ROS_INFO("%s, frame _id:  %s", "get it", h.frame_id.c_str());
+    
+// std::cout<<msg->fields.size()<<std::endl;
     // std::cout<<msg->data.size()<<std::endl;
     // std::cout<<msg->fields[0].name<<std::endl;
     // std::cout<<msg->fields[0].offset<<std::endl;

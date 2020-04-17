@@ -10,6 +10,8 @@
 #include <functional>
 #include <climits>
 
+#include <stdlib.h>
+
 #include <sensor_msgs/PointField.h>
 
 
@@ -32,23 +34,16 @@ main(int argc, char **argv)
     
     std::string size_str = "100kb"; //default
     size_str = argv[1];
+
     
-
-    int index = 100;
-    if("100kb" == size_str){
-        index = 100;
-    } else if("200kb" == size_str){
-        index = 200;
-    } else if("500kb" == size_str){
-        index = 500;
-    } else if("1mb" == size_str){
-        index = 1024;
-    } else if("1.5mb" == size_str){
-        index = 1536;
-    } else if("2mb" == size_str){
-        index = 2048;
+    std::string unit = size_str.substr(size_str.length()- 2, 2);
+    std::string num_str = size_str.substr(0, size_str.length() -2);
+    int index = atoi(num_str.c_str());
+    if("mb" == unit){
+        index = 1024 * index;
     }
-
+    
+   //std::cout<< index << std::endl;
 
     int data_size = 1024 * index;
     std::vector<sensor_msgs::PointField> point_fields(3);
@@ -69,13 +64,13 @@ main(int argc, char **argv)
     std::generate(begin(data), end(data), std::ref(rbe));
     msg.data = data;
     
-
-
     ros::Rate loop_rate(10);
     int id_index = 0;
     while (ros::ok()){
         msg.header.frame_id = std::to_string(id_index++);
-        ROS_INFO("%s, frame_id: %s", "send it", msg.header.frame_id.c_str());
+        msg.header.stamp = ros::Time::now();
+        std::cout<<"Send time: " <<msg.header.stamp<<" frame_id: " << msg.header.frame_id<<std::endl;
+        //ROS_INFO("%s, frame_id: %s", "send it", msg.header.frame_id.c_str());
         pcl_pub.publish(msg);
         ros::spinOnce();
         loop_rate.sleep();
